@@ -1,0 +1,38 @@
+galaxy_info:
+  author: 'Brad Stancel'
+  description: Restores a Bareos Backup from your server onto a given server and file path.  
+  company: YourOnlineDept.com
+
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
+
+  license: BSD
+
+  min_ansible_version: 2.4
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  #github_branch:
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: RHEL
+    versions:
+    - all
+
+  galaxy_tags: 
+    - bareos
+    - backups
+    - automation
+
+dependencies: []
