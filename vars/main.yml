@@ -5,20 +5,25 @@
 # Fill in appropriate values below unless passing from a higher precedence
 
 # The Bareos Server that stores the backups
-restore_bareos_backup_bareos_server: "hostname-of-bareos-server"
+#restore_bareos_backup_bareos_server: "hostname-of-bareos-server"
 
 # The name of the client listed inside Bareos Server that you want to restore
-#restore_bareos_bareos_client_to_restore: "bareos-client-to-restore" // See below instead
+restore_bareos_bareos_client_to_restore: "bareos-fd"
 
-# The IP or FQDN of the server where you want to restore this backup to. It will most likely 
+# The IP or FQDN of the server where you want to restore this backup to. It will most likely
 # be the machine where this Ansible role is being executed.
-restore_bareos_backup_restore_destination: "IP-or-fqdn-of-server-to-restore-backup-on"
+#restore_bareos_backup_restore_destination: ""
 
-
+restore_bareos_fileset: "SelfTest"
+restore_bareos_destination_client: "bareos-fd"
+restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos"
+restore_bareos_backup_replace_files_on_client: "never"
 
 
 #####     Optional Variables      #####
-
-# These variables are set with the below defaults in defaults/main.yml. 
+# These variables are set with the below defaults in defaults/main.yml.
 # Only uncomment and change them or pass values if you would like
+
+#restore_bareos_jobid: 3
+#restore_bareos_date_before: "2018-10-02 00:00:00"
 

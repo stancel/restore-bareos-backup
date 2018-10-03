@@ -1,2 +1,13 @@
 ---
 # tasks file for restore-bareos-backup
+
+- name: Copy script to a temp file
+  template: src=bareos_restore.sh.j2 dest=/tmp/bareos_restore.sh mode=700 owner=root force=yes
+
+- name: Restore backup
+  shell: "/tmp/bareos_restore.sh"
+  register: command_result
+
+- name: Ansible shell register result
+  debug: msg="{{ command_result }}"
+
