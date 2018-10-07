@@ -16,8 +16,8 @@ restore_bareos_bareos_client_to_restore: "bareos-fd"
 
 restore_bareos_fileset: "SelfTest"
 restore_bareos_destination_client: "bareos-fd"
-restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos"
-restore_bareos_backup_replace_files_on_client: "never"
+#restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos"
+#restore_bareos_backup_replace_files_on_client: "never"
 
 
 #####     Optional Variables      #####
