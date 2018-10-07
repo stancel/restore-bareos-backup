@@ -50,12 +50,16 @@ if [ "$jobid" ]; then
     jobid_str="jobid=$jobid"
 fi
 
+if [ "$destination_client" ]; then
+    restoreclient_str="restoreclient=$destination_client"
+fi
+
 if [ "$date_before" ]; then  # Restore everything before specified date
-    cmd="restore client=$client restoreclient=$destination_client all done before=\"$date_before\" fileset=$fileset $where_str replace=$replace select yes"
+    cmd="restore client=$client $restoreclient_str all done before=\"$date_before\" fileset=$fileset $where_str replace=$replace select yes"
 elif [ "$jobid" ]; then  # Restore only files from given JobID
-    cmd="restore client=$client restoreclient=$destination_client all done fileset=$fileset $where_str $jobid_str replace=$replace yes"
+    cmd="restore client=$client $restoreclient_str all done fileset=$fileset $where_str $jobid_str replace=$replace yes"
 else  # Restore all files in given Fileset
-    cmd="restore client=$client restoreclient=$destination_client all done fileset=$fileset $where_str replace=$replace select yes"
+    cmd="restore client=$client $restoreclient_str all done fileset=$fileset $where_str replace=$replace select yes"
 fi
 
 echo $cmd |bconsole
