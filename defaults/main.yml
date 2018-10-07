@@ -4,15 +4,13 @@
 # Bareos Server option to replace the existing files when restoring
 restore_bareos_backup_replace_files_on_client: "never"
 
-# Bareos Server option to merge all filesets when doing a restore
-restore_bareos_backup_merge_all_client_filesets: "yes"
-
-# Bareos Server option to merge all related jobs to last full backup of selected backup job
-restore_bareos_backup_merge_jobs_to_last_full_backup: "yes"
-
-# Bareos Server Default Restore Job Name
-restore_bareos_backup_restore_job_name: "RestoreFiles"
-
 # The absolute file path where the backup files should be restored to
 restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos-restores"
+
+
+
+
+
+
+
 
