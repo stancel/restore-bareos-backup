@@ -1,13 +1,35 @@
 ---
 # tasks file for restore-bareos-backup
 
+- name: Make sure temp file bareos_restore script is removed
+  become: true
+  become_method: sudo
+  file: 
+    state: absent 
+    path: /tmp/bareos_restore.sh 
+
 - name: Copy script to a temp file
-  template: src=bareos_restore.sh.j2 dest=/tmp/bareos_restore.sh mode=700 owner=root force=yes
+  become: true
+  become_method: sudo
+  template: 
+    src: bareos_restore.sh.j2 
+    dest: /tmp/bareos_restore.sh 
+    mode: 700 
+    owner: root 
+    force: yes
 
 - name: Restore backup
+  become: true
+  become_method: sudo
   shell: "/tmp/bareos_restore.sh"
   register: command_result
 
 - name: Ansible shell register result
   debug: msg="{{ command_result }}"
+
+- name: Sleep for 300 seconds to give time for the Baroes Restore to complete
+  wait_for: 
+    timeout: 300
+  delegate_to: localhost
+
 
