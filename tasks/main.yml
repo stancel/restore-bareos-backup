@@ -31,5 +31,3 @@
   wait_for: 
     timeout: 300
   delegate_to: localhost
-
-

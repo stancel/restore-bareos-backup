@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: restore-bareos-backup
   author: 'Brad Stancel'
   description: Restores a Bareos Backup from your server onto a given server and file path.  
   company: YourOnlineDept.com
