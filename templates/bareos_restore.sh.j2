@@ -62,4 +62,14 @@ else  # Restore all files in given Fileset
     cmd="restore client=$client $restoreclient_str all done fileset=$fileset $where_str replace=$replace select yes"
 fi
 
-echo $cmd |bconsole
+output="$(echo $cmd |bconsole)"
+
+if grep 'Job queued. JobId=' <<< "$output"; then
+    jobid_str=$(echo "$output" | grep 'Job queued. JobId=')
+    echo "Success"
+else
+    echo "Bareos failed to start the job. Console output is:"
+    echo
+    echo "$output"
+    exit 1
+fi
