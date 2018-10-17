@@ -27,6 +27,15 @@
 - name: Restore command result
   debug: msg="{{ command_result }}"
 
+- name: "Wait until the Bareos Restore Job completes"
+  become: true
+  become_method: sudo
+  wait_for:
+    delay: 5
+    path: /var/lib/bareos/bareos-dir.restore.1.bsr
+    state: absent
+    timeout: 600
+
 #- name: Sleep for 300 seconds to give time for the Baroes Restore to complete
 #  wait_for:
 #    timeout: 300
