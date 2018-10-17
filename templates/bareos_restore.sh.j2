@@ -24,6 +24,9 @@ restore_to="{{ restore_bareos_backup_restore_file_path_on_client }}"
 {%- if restore_bareos_backup_replace_files_on_client is defined %}
 replace="{{ restore_bareos_backup_replace_files_on_client }}"
 {% endif %}
+{%- if restore_bareos_backup_wait_job_timeout is defined %}
+timeout="{{ restore_bareos_backup_wait_job_timeout }}"
+{% endif %}
 
 
 
@@ -64,12 +67,33 @@ fi
 
 output="$(echo $cmd |bconsole)"
 
-if grep 'Job queued. JobId=' <<< "$output"; then
-    jobid_str=$(echo "$output" | grep 'Job queued. JobId=')
-    echo "Success"
-else
+if ! grep 'Job queued. JobId=' <<< "$output"; then
     echo "Bareos failed to start the job. Console output is:"
     echo
     echo "$output"
     exit 1
 fi
+
+jobid_str=$(echo "$output" | grep 'Job queued. JobId=')
+jobid=$(echo -n "$jobid_str" |sed "s/Job queued. JobId=//")
+#echo "Jobid: $jobid"
+
+i=0
+while true; do
+    job_status=$(echo "list jobid=$jobid" |bconsole | tail -n +10 |head -n 1 |cut -d "|" -f 10 | sed 's/ //g')
+    #echo "Job_status: $job_status"
+    if [ "$job_status" = "T" ]; then
+        echo "Success"
+        exit
+    fi
+    sleep 1
+    i=$((i+1))
+
+    if [ "$i" -gt "$timeout" ]; then
+        echo "Job with JobID=$jobid wasn't restored within $timeout seconds. Giving up, check status manually in bareos with command 'list jobid=$jobid'"
+        exit 1
+    fi
+done
+
+
+

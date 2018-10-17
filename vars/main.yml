@@ -7,11 +7,14 @@
 # The name of the client listed inside Bareos Server that you want to restore
 restore_bareos_bareos_client_to_restore: "name of Bareos client"
 
-# The Bareos client name of the server where you want to restore this backup to. 
+# The Bareos client name of the server where you want to restore this backup to.
 restore_bareos_destination_client: "name of Bareos destination client"
 
 # The name of the Bareos Fileset to restore
 restore_bareos_fileset: "{{ restore_bareos_bareos_client_to_restore }}-FileSet"
+
+# Timeout in seconds to wait for job completion
+restore_bareos_backup_wait_job_timeout: 300
 
 #####     Optional Variables      #####
 # These variables are set with the below defaults in defaults/main.yml.
