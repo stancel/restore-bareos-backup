@@ -9,3 +9,4 @@ restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos-restores"
 
 # Timeout in seconds to wait for job completion
 restore_bareos_backup_wait_job_timeout: 900
+

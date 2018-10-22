@@ -3,20 +3,20 @@
 {% if restore_bareos_backup_bareos_server is defined %}
 bareos_server="{{ restore_bareos_backup_bareos_server }}"
 {% endif %}
-{%- if restore_bareos_bareos_client_to_restore is defined %}
-client="{{ restore_bareos_bareos_client_to_restore }}"
+{%- if restore_bareos_backup_bareos_client_to_restore is defined %}
+client="{{ restore_bareos_backup_bareos_client_to_restore }}"
 {% endif %}
-{%- if restore_bareos_date_before is defined %}
-date_before="{{ restore_bareos_date_before }}"
+{%- if restore_bareos_backup_date_before is defined %}
+date_before="{{ restore_bareos_backup_date_before }}"
 {% endif %}
-{%- if restore_bareos_fileset is defined %}
-fileset="{{ restore_bareos_fileset }}"
+{%- if restore_bareos_backup_fileset is defined %}
+fileset="{{ restore_bareos_backup_fileset }}"
 {% endif %}
-{%- if restore_bareos_destination_client is defined %}
-destination_client="{{ restore_bareos_destination_client }}"
+{%- if restore_bareos_backup_destination_client is defined %}
+destination_client="{{ restore_bareos_backup_destination_client }}"
 {% endif %}
-{%- if restore_bareos_jobid is defined %}
-jobid={{ restore_bareos_jobid }}
+{%- if restore_bareos_backup_jobid is defined %}
+jobid="{{ restore_bareos_backup_jobid }}"
 {% endif %}
 {%- if restore_bareos_backup_restore_file_path_on_client is defined %}
 restore_to="{{ restore_bareos_backup_restore_file_path_on_client }}"
@@ -31,12 +31,12 @@ timeout="{{ restore_bareos_backup_wait_job_timeout }}"
 
 
 if [ ! "$client" ]; then
-    echo "restore_bareos_bareos_client_to_restore var is not defined, exiting"
+    echo "restore_bareos_backup_bareos_client_to_restore var is not defined, exiting"
     exit 1
 fi
 
 if [ ! "$fileset" ]; then
-    echo "restore_bareos_fileset var is not defined, exiting"
+    echo "restore_bareos_backup_fileset var is not defined, exiting"
     exit 1
 fi
 
