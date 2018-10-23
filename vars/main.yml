@@ -13,12 +13,22 @@ restore_bareos_backup_destination_client: "name of Bareos destination client"
 # The name of the Bareos Fileset to restore
 restore_bareos_backup_fileset: "{{ restore_bareos_backup_bareos_client_to_restore }}-FileSet"
 
-# Timeout in seconds to wait for job completion
-restore_bareos_backup_wait_job_timeout: 300
 
 #####     Optional Variables      #####
 # These variables are set with the below defaults in defaults/main.yml.
 # Only uncomment and change them or pass values if you would like
 
+# Restore files from a specific Bareos Backup Job ID. If filled in this will only restore files from that Job ID.
 #restore_bareos_backup_jobid: 3
+
+# Restore files before a specific date
 #restore_bareos_backup_date_before: "2018-10-02 00:00:00"
+
+# Bareos Server option to replace the existing files when restoring
+#restore_bareos_backup_replace_files_on_client: "never"
+
+# The absolute file path where the backup files should be restored to
+#restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos-restores"
+
+# Timeout in seconds to wait for job completion
+#restore_bareos_backup_wait_job_timeout: 900

@@ -44,6 +44,10 @@ Role Variables
 ```
 	restore_bareos_backup_replace_files_on_client: "never"
 ```
+(Default) Maximum time (in seconds) to wait for the Bareos restore job to complete. This is the default.
+```
+	restore_bareos_backup_wait_job_timeout: 900
+```
 
 Dependencies
 ------------
