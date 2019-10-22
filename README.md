@@ -17,34 +17,42 @@ Role Variables
 --------------
 
 (Required) The name of the client listed inside Bareos Server that you want to restore
+
 ```
 	restore_bareos_backup_bareos_client_to_restore: "name of Bareos client"
 ```
-(Required) The Bareos client name of the server where you want to restore this backup to. 
+(Required) The Bareos client name of the server where you want to restore this backup to.
+ 
 ```
 	restore_bareos_backup_destination_client: "name of Bareos destination client"
 ```
 (Required) The name of the Bareos Fileset to restore
+
 ```
 	restore_bareos_backup_fileset: "{{ restore_bareos_backup_bareos_client_to_restore }}-FileSet"
 ```
 (Optional) Bareos Server Job ID to restore. If filled in this will only restore files from that Job ID.
+
 ```
 	restore_bareos_backup_jobid: 3
 ```
 (Optional) Restores all backed up files from before a certain date.
+
 ```
 	restore_bareos_backup_date_before: "2018-10-02 00:00:00"
 ```
 (Default) The absolute file path where the backup files should be restored to. This is the default.
+
 ```
 	restore_bareos_backup_restore_file_path_on_client: "/tmp/bareos-restores"
 ```
 (Default) Bareos Server option to replace the existing files when restoring. This is the default.
+
 ```
 	restore_bareos_backup_replace_files_on_client: "never"
 ```
 (Default) Maximum time (in seconds) to wait for the Bareos restore job to complete. This is the default.
+
 ```
 	restore_bareos_backup_wait_job_timeout: 900
 ```
@@ -57,16 +65,17 @@ None
 Example Playbook
 ----------------
 
+```
 	- hosts: your_bareos_server
 	  vars_files:
 	    - vars/main.yml
 	  roles:
 	    - stancel.restore-bareos-backup
-
+```
 
 or 
 
-
+```
 	- hosts: your_bareos_server
 	  vars:
 		restore_bareos_backup_bareos_client_to_restore: "bareos-name-of-server-where-backed-up"
@@ -74,6 +83,7 @@ or
 		restore_bareos_backup_fileset: "{{ restore_bareos_backup_bareos_client_to_restore }}-FileSet"
 	  roles:
 	    - stancel.restore-bareos-backup
+```
 
 License
 -------
@@ -84,6 +94,3 @@ Author Information
 ------------------
 
 [Brad Stancel](https://github.com/stancel)
-
-
-

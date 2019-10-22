@@ -26,9 +26,6 @@ galaxy_info:
   - name: Fedora
     versions:
     - all
-  - name: RHEL
-    versions:
-    - all
 
   galaxy_tags: 
     - bareos
@@ -36,5 +33,3 @@ galaxy_info:
     - automation
 
 dependencies: []
-
-

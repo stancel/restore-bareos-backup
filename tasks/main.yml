@@ -14,7 +14,7 @@
   template:
     src: bareos_restore.sh.j2
     dest: /tmp/bareos_restore.sh
-    mode: 700
+    mode: 0700
     owner: root
     force: yes
 
@@ -25,7 +25,8 @@
   register: command_result
 
 - name: Restore command result
-  debug: msg="{{ command_result }}"
+  debug: 
+    msg: "{{ command_result }}"
 
 - name: "Wait until the Bareos Restore Job completes"
   become: true

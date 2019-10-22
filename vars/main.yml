@@ -13,7 +13,6 @@ restore_bareos_backup_destination_client: "name of Bareos destination client"
 # The name of the Bareos Fileset to restore
 restore_bareos_backup_fileset: "{{ restore_bareos_backup_bareos_client_to_restore }}-FileSet"
 
-
 #####     Optional Variables      #####
 # These variables are set with the below defaults in defaults/main.yml.
 # Only uncomment and change them or pass values if you would like

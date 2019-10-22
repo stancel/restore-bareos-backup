@@ -28,8 +28,6 @@ replace="{{ restore_bareos_backup_replace_files_on_client }}"
 timeout="{{ restore_bareos_backup_wait_job_timeout }}"
 {% endif %}
 
-
-
 if [ ! "$client" ]; then
     echo "restore_bareos_backup_bareos_client_to_restore var is not defined, exiting"
     exit 1
@@ -94,6 +92,3 @@ while true; do
         exit 1
     fi
 done
-
-
-
