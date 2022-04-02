@@ -14,14 +14,16 @@
   template:
     src: bareos_restore.sh.j2
     dest: /tmp/bareos_restore.sh
-    mode: 0700
+    mode: 0777
     owner: root
     force: yes
 
 - name: Restore backup
   become: true
   become_method: sudo
-  shell: "/tmp/bareos_restore.sh"
+  shell: /tmp/bareos_restore.sh
+  args:
+    executable: bash
   register: command_result
 
 - name: Restore command result

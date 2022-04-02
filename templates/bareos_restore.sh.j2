@@ -82,7 +82,7 @@ while true; do
     #echo "Job_status: $job_status"
     if [ "$job_status" = "T" ]; then
         echo "Success"
-        exit
+        exit 0
     fi
     sleep 1
     i=$((i+1))
@@ -92,3 +92,5 @@ while true; do
         exit 1
     fi
 done
+
+exit 0
