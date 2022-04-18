@@ -78,7 +78,7 @@ jobid=$(echo -n "$jobid_str" |sed "s/Job queued. JobId=//")
 
 i=0
 while true; do
-    job_status=$(echo "list jobid=$jobid" |bconsole | tail -n +10 |head -n 1 |cut -d "|" -f 10 | sed 's/ //g')
+    job_status=$(echo "list jobid=$jobid" | bconsole | tail -n +10 | head -n 7 | cut -d "|" -f 10 | tail -1 | sed 's/ //g')
     #echo "Job_status: $job_status"
     if [ "$job_status" = "T" ]; then
         echo "Success"
